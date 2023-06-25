@@ -24,18 +24,13 @@ concept HasNameField = requires {
 };
 
 template <typename T>
-concept HasRelativeFilePath = requires {
-  T::kRelativeFilePath;
-};
-
-template <typename T>
-concept HasFileFormat = requires {
-  T::kFileFormat;
+concept HasFilePath = requires {
+  T::kFilePath;
 };
 
 template <typename T>
 concept ValidSettings = requires {
-  HasNameField<T>&& HasRelativeFilePath<T>&& HasFileFormat<T>;
+  HasNameField<T>&& HasFilePath<T>;
 };
 
 }  // namespace detail
